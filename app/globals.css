@@ -9,6 +9,20 @@
   --font-inter: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-manrope: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 
+  /* Animations */
+  --animate-marquee: marquee 30s linear infinite;
+
+  /* Keyframes */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }
+
   /* Colors - CSS Variables */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -69,6 +83,7 @@
   --border: #e2e8f0;
   --input: #e2e8f0;
   --ring: #000000;
+  --text-on-surface: #0b1c30;
 }
 
 /* CSS Variables - Dark Mode */
@@ -92,6 +107,7 @@
   --border: #3c4a42;
   --input: #3c4a42;
   --ring: #4edea3;
+  --text-on-surface: #dde4dd;
 }
 
 * {

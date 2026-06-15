@@ -69,7 +69,7 @@ function LoginForm() {
             </div>
           </div>
         </MotionWrapper>
-        <CardTitle className="text-headline-sm font-heading text-on-surface">Welcome Back</CardTitle>
+        <CardTitle className="text-headline-sm font-heading text-primary">Welcome Back</CardTitle>
         <CardDescription className="text-on-surface-variant">Sign in to manage your configuration platform</CardDescription>
       </CardHeader>
 
@@ -96,7 +96,7 @@ function LoginForm() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-10 bg-background border-outline focus-visible:ring-primary text-on-surface placeholder:text-on-surface-variant"
+                  className="pl-10 bg-background border-outline focus-visible:ring-primary text-primary placeholder:text-on-surface-variant"
                   placeholder="operator@company.com"
                 />
               </div>
@@ -116,13 +116,13 @@ function LoginForm() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10 pr-10 bg-background border-outline focus-visible:ring-primary text-on-surface placeholder:text-on-surface-variant"
+                  className="pl-10 pr-10 bg-background border-outline focus-visible:ring-primary text-primary placeholder:text-on-surface-variant"
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-on-surface-variant hover:text-on-surface cursor-pointer"
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-on-surface-variant hover:text-primary cursor-pointer"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>

@@ -72,7 +72,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             // Base styles matching TOAST.html
             "group toast",
             "group-[.toaster]:bg-white",
-            "group-[.toaster]:text-on-surface",
+            "group-[.toaster]:text-primary",
             "group-[.toaster]:border",
             "group-[.toaster]:border-outline-variant/50",
             "group-[.toaster]:rounded-xl",
@@ -165,7 +165,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             "group-[.toast]:!right-3",
             "group-[.toast]:!top-3",
             "group-[.toast]:!text-outline",
-            "group-[.toast]:!hover:text-on-surface",
+            "group-[.toast]:!hover:text-primary",
             "group-[.toast]:!border-none",
             "group-[.toast]:!bg-transparent",
           ].join(" "),

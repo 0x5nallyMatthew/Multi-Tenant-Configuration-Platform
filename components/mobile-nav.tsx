@@ -51,7 +51,7 @@ export function MobileNav({ isOpen, onClose, user, onSignOut, userRole }: Mobile
                     <Link
                         href="/tenants"
                         onClick={onClose}
-                        className="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-lg transition-all duration-200 text-label-md"
+                        className="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-lg transition-all duration-200 text-label-md"
                     >
                         <LayoutDashboard className="w-5 h-5" />
                         Tenants list
@@ -59,7 +59,7 @@ export function MobileNav({ isOpen, onClose, user, onSignOut, userRole }: Mobile
                     <Link
                         href="/tenants/new"
                         onClick={onClose}
-                        className="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-lg transition-all duration-200 text-label-md"
+                        className="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-lg transition-all duration-200 text-label-md"
                     >
                         <PlusCircle className="w-5 h-5" />
                         Create Tenant
@@ -67,7 +67,7 @@ export function MobileNav({ isOpen, onClose, user, onSignOut, userRole }: Mobile
                     <Link
                         href="/compare"
                         onClick={onClose}
-                        className="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-lg transition-all duration-200 text-label-md"
+                        className="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-lg transition-all duration-200 text-label-md"
                     >
                         <GitCompare className="w-5 h-5" />
                         Compare Config
@@ -80,7 +80,7 @@ export function MobileNav({ isOpen, onClose, user, onSignOut, userRole }: Mobile
                             <UserIcon className="w-4 h-4" />
                         </div>
                         <div className="flex-1 min-w-0">
-                            <p className="text-label-md text-on-surface truncate">{user.name || "User"}</p>
+                            <p className="text-label-md text-primary truncate">{user.name || "User"}</p>
                             <p className="text-label-sm text-on-surface-variant capitalize">{user.role}</p>
                         </div>
                     </div>

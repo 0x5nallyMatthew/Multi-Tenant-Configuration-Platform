@@ -81,7 +81,7 @@ export default function SignupPage() {
               </div>
             </div>
           </MotionWrapper>
-          <CardTitle className="text-headline-sm font-heading text-on-surface">Create Account</CardTitle>
+          <CardTitle className="text-headline-sm font-heading text-primary">Create Account</CardTitle>
           <CardDescription className="text-on-surface-variant">Register as a system operator or admin</CardDescription>
         </CardHeader>
 
@@ -113,7 +113,7 @@ export default function SignupPage() {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="pl-10 bg-background border-outline focus-visible:ring-primary text-on-surface placeholder:text-on-surface-variant"
+                  className="pl-10 bg-background border-outline focus-visible:ring-primary text-primary placeholder:text-on-surface-variant"
                   placeholder="John Doe"
                 />
               </div>
@@ -133,7 +133,7 @@ export default function SignupPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-10 bg-background border-outline focus-visible:ring-primary text-on-surface placeholder:text-on-surface-variant"
+                  className="pl-10 bg-background border-outline focus-visible:ring-primary text-primary placeholder:text-on-surface-variant"
                   placeholder="operator@company.com"
                 />
               </div>
@@ -153,13 +153,13 @@ export default function SignupPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10 pr-10 bg-background border-outline focus-visible:ring-primary text-on-surface placeholder:text-on-surface-variant"
+                  className="pl-10 pr-10 bg-background border-outline focus-visible:ring-primary text-primary placeholder:text-on-surface-variant"
                   placeholder="•••••••• (Min 6 chars)"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-on-surface-variant hover:text-on-surface cursor-pointer"
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-on-surface-variant hover:text-primary cursor-pointer"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -177,7 +177,7 @@ export default function SignupPage() {
                   onClick={() => setRole("operator")}
                   className={`py-6 border transition-all cursor-pointer ${role === "operator"
                     ? "bg-surface hover:bg-surface-container border-primary text-primary shadow-lg shadow-primary/10"
-                    : "bg-background border-outline text-on-surface-variant hover:text-on-surface hover:bg-surface-container"
+                    : "bg-background border-outline text-on-surface-variant hover:text-primary hover:bg-surface-container"
                     }`}
                 >
                   Operator
@@ -188,7 +188,7 @@ export default function SignupPage() {
                   onClick={() => setRole("admin")}
                   className={`py-6 border transition-all cursor-pointer ${role === "admin"
                     ? "bg-surface hover:bg-surface-container border-primary text-primary shadow-lg shadow-primary/10"
-                    : "bg-background border-outline text-on-surface-variant hover:text-on-surface hover:bg-surface-container"
+                    : "bg-background border-outline text-on-surface-variant hover:text-primary hover:bg-surface-container"
                     }`}
                 >
                   Admin

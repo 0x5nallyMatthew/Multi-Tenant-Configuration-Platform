@@ -1,11 +1,6 @@
-import { ArrowRight, PlayCircle, BarChart3, Shield, Zap } from "lucide-react"
+import { ArrowRight, PlayCircle } from "lucide-react"
 import Link from "next/link"
-
-const heroSlides = [
-    { icon: BarChart3, title: "Real-Time Dashboard", subtitle: "Live claims processing & analytics" },
-    { icon: Shield, title: "Enterprise Security", subtitle: "SOC 2 Type II certified infrastructure" },
-    { icon: Zap, title: "Instant Deployments", subtitle: "Zero-downtime tenant configuration rollout" },
-]
+import { HeroCarousel } from "./hero-carousel"
 
 /**
  * Static hero section - no client-side JavaScript required.
@@ -47,30 +42,8 @@ export function HeroStatic() {
                         </div>
                     </div>
 
-                    {/* Hero visual - Static, no carousel */}
-                    <div className="rounded-2xl border border-border bg-muted aspect-[4/3] relative overflow-hidden shadow-lg">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="text-center p-4 sm:p-6 space-y-2 sm:space-y-3">
-                                <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-primary/10 mx-auto">
-                                    <BarChart3 className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
-                                </div>
-                                <p className="text-xs sm:text-sm font-semibold text-foreground">
-                                    Real-Time Dashboard
-                                </p>
-                                <p className="text-[10px] sm:text-xs uppercase tracking-wider font-mono text-muted-foreground">
-                                    Live claims processing & analytics
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Static slide indicators */}
-                        <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2">
-                            <div className="h-1.5 sm:h-2 rounded-full bg-primary w-4 sm:w-6" />
-                            <div className="h-1.5 sm:h-2 rounded-full bg-border w-1.5 sm:w-2" />
-                            <div className="h-1.5 sm:h-2 rounded-full bg-border w-1.5 sm:w-2" />
-                        </div>
-                    </div>
+                    {/* Hero visual - Interactive carousel */}
+                    <HeroCarousel />
                 </div>
             </div>
         </section>
