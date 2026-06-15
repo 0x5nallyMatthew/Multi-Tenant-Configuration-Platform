@@ -4,17 +4,16 @@ export default auth((req) => {
   const isLoggedIn = !!req.auth
   const { pathname } = req.nextUrl
   
-  // Define auth pages and public pages (accessible without login)
-  const isAuthPage = pathname === "/login" || pathname === "/signup"
-  const isPublicPage = pathname === "/" // Landing page
+  // Public pages accessible without login
+  const publicPages = ["/", "/login", "/signup", "/landing"]
+  const isPublicPage = publicPages.includes(pathname)
   
-  // Allow access to auth pages and public pages
-  if (isAuthPage || isPublicPage) {
+  // Allow access to public pages
+  if (isPublicPage) {
     // If logged in and on auth page, redirect to tenants
-    if (isLoggedIn && isAuthPage) {
+    if (isLoggedIn && (pathname === "/login" || pathname === "/signup")) {
       return Response.redirect(new URL("/tenants", req.nextUrl))
     }
-    // Allow access to login/signup/landing page
     return
   }
 
@@ -28,25 +27,19 @@ export default auth((req) => {
     return Response.redirect(new URL(`/login?callbackUrl=${encodedCallbackUrl}`, req.nextUrl))
   }
 
-  // If logged in and on root page, redirect to tenants dashboard
-  if (pathname === "/") {
-    return Response.redirect(new URL("/tenants", req.nextUrl))
-  }
+  // If logged in, allow access to protected pages
+  return
 })
 
 export const config = {
   matcher: [
-    "/",
-    "/login",
-    "/signup",
-    "/tenants/:path*",
-    "/compare/:path*"
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
   ]
 }
-
-// Note: bfcache (back/forward cache) issues in development mode are expected.
-// The WebSocket and cache-control:no-store headers are from Next.js dev server.
-// In production (next start), these issues will not be present as:
-// 1. WebSocket connections are only used in development
-// 2. Production builds use proper cache headers
-// 3. The build optimizations in next.config.ts will apply
