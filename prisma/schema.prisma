@@ -1,0 +1,43 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String   // hashed password
+  role      String   @default("operator") // "admin" | "operator"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tenants   Tenant[]
+}
+
+model Tenant {
+  id        String          @id @default(cuid())
+  name      String
+  slug      String          @unique
+  config    Json            // JSON representation of TenantConfig
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  ownerId   String
+  owner     User            @relation(fields: [ownerId], references: [id])
+  versions  TenantVersion[]
+}
+
+model TenantVersion {
+  id        String   @id @default(cuid())
+  tenantId  String
+  tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  name      String
+  slug      String
+  config    Json     // Snapshot of config at save time
+  version   Int
+  savedAt   DateTime @default(now())
+  note      String?
+}

@@ -1,0 +1,8 @@
+export { Navigation } from "./navigation"
+export { HeroStatic } from "./hero-static"
+export { TrustBanner } from "./trust-banner"
+export { FeaturesSection } from "./features-section"
+export { HowItWorksSection } from "./how-it-works-section"
+export { FAQSection } from "./faq-section"
+export { CTASection } from "./cta-section"
+export { Footer } from "./footer"
