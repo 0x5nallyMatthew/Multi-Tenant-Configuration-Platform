@@ -4,6 +4,13 @@ import { db } from "./lib/db"
 import bcrypt from "bcryptjs"
 import { z } from "zod"
 
+// Helper to get the correct base URL for the current environment
+function getBaseUrl() {
+  if (typeof window !== "undefined") return "" // Client-side, use relative URLs
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}` // Vercel
+  return process.env.NEXTAUTH_URL || "http://localhost:3000" // Local development
+}
+
 // Extend NextAuth types to include custom user fields (id and role)
 declare module "next-auth" {
   interface User {
@@ -22,6 +29,7 @@ declare module "next-auth" {
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  trustHost: true,
   providers: [
     Credentials({
       async authorize(credentials) {
