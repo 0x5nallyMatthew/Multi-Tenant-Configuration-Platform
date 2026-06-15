@@ -1,4 +1,5 @@
 import { db } from "@/lib/db"
+import { Prisma } from "@prisma/client"
 import { tenantConfigSchema } from "@/lib/tenant-schema"
 import {
   withAuthAndParams,
@@ -46,7 +47,7 @@ export const PUT = withAuthAndParams<{ id: string }>(async (req, { params, user 
   const resolvedName = name || tenant.name
   const resolvedSlug = slug || tenant.slug
 
-  const updated = await db.$transaction(async (tx) => {
+  const updated = await db.$transaction(async (tx: Prisma.TransactionClient) => {
     const lastVersion = await tx.tenantVersion.findFirst({
       where: { tenantId: params.id },
       orderBy: { version: "desc" },

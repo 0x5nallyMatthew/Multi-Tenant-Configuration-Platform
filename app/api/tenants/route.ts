@@ -1,4 +1,5 @@
 import { db } from "@/lib/db"
+import { Prisma } from "@prisma/client"
 import { tenantConfigSchema } from "@/lib/tenant-schema"
 import { withAuth, success, badRequest, conflict } from "@/lib/api/helpers"
 
@@ -38,7 +39,7 @@ export const POST = withAuth(async (req, { user }) => {
     return conflict("Slug must be unique")
   }
 
-  const tenant = await db.$transaction(async (tx) => {
+  const tenant = await db.$transaction(async (tx: Prisma.TransactionClient) => {
     const created = await tx.tenant.create({
       data: { name, slug, config, ownerId: user.id },
     })

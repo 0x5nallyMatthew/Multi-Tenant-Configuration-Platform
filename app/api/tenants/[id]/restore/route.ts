@@ -1,4 +1,5 @@
 import { db } from "@/lib/db"
+import { Prisma } from "@prisma/client"
 import {
   withAuthAndParams,
   findTenantOrError,
@@ -27,7 +28,7 @@ export const POST = withAuthAndParams<{ id: string }>(async (req, { params, user
     return notFound("Version not found")
   }
 
-  const updated = await db.$transaction(async (tx) => {
+  const updated = await db.$transaction(async (tx: Prisma.TransactionClient) => {
     const lastVersion = await tx.tenantVersion.findFirst({
       where: { tenantId: params.id },
       orderBy: { version: "desc" },
