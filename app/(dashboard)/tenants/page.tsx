@@ -1,6 +1,7 @@
 import React, { Suspense } from "react"
 import { auth } from "@/auth"
 import { db } from "@/lib/db"
+import { Prisma } from "@prisma/client"
 import { redirect } from "next/navigation"
 import { TenantConfig } from "@/lib/tenant-schema"
 
@@ -42,8 +43,13 @@ function TenantsPageSkeleton() {
   )
 }
 
+// Type for tenant with included owner
+export type TenantWithOwner = Prisma.TenantGetPayload<{
+  include: { owner: { select: { name: true; email: true } } }
+}>
+
 // Optimized fetch function with caching
-async function fetchTenants() {
+async function fetchTenants(): Promise<TenantWithOwner[]> {
   try {
     const rawTenants = await db.tenant.findMany({
       include: {
@@ -75,7 +81,7 @@ export default async function TenantsPage() {
   const rawTenants = await fetchTenants()
 
   // Handle config casting and owner name nullability
-  const tenants: TenantFormValues[] = rawTenants.map((t) => ({
+  const tenants: TenantFormValues[] = rawTenants.map((t: TenantWithOwner) => ({
     ...t,
     config: t.config as TenantConfig,
     owner: t.owner ? { name: t.owner.name || "", email: t.owner.email } : undefined
