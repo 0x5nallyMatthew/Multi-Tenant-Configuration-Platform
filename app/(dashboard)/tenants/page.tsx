@@ -75,7 +75,7 @@ export default async function TenantsPage() {
   const rawTenants = await fetchTenants()
 
   // Handle config casting and owner name nullability
-  const tenants: TenantFormValues[] = rawTenants.map((t: TenantFormValues) => ({
+  const tenants: TenantFormValues[] = rawTenants.map((t) => ({
     ...t,
     config: t.config as TenantConfig,
     owner: t.owner ? { name: t.owner.name || "", email: t.owner.email } : undefined
